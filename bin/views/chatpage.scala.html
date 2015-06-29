@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<table>
+<td><div id="onChat" class="row">
+        <div class="span10" id="main">
+            <div id="messages">
+            </div>
+            <textarea id="talk"></textarea>
+            <button id="clk">click here</button>
+        </div>
+        </div>
+        <div class="span4">
+            <h2>Members</h2>
+            <ul id="members">
+            </ul>
+	
+        </div>
+    </td>
+       <td> <form action="/logout" method="post">
+			
+			
+			<input type="submit" value="Logout" style="background-color: red">
+		</form></td>
+		</table>
+        
+ 
+ <script type="text/javascript" charset="utf-8">
+ 
+        
+            var WS = window['MozWebSocket'] ? MozWebSocket : WebSocket;
+	        var chatSocket = new WS("@routes.Application.chat2().webSocketURL(request)");
+	        var WS2 = window['MozWebSocket'] ? MozWebSocket : WebSocket;
+	        var chatSocket2 = new WS2("@routes.Application.list2().webSocketURL(request)");
+	        var name = document.cookie.split('=');
+            var sendMessage = function() {
+                  var mess = $("#talk").val();
+                  name[1].concat(" : ");
+                  name[1].concat(mess);
+                  console.log(name[1]);
+                  console.log(mess);
+                  console.log(name);
+                  chatSocket.send(JSON.stringify(
+                        {
+                         name2: name[1] 
+                        }
+                        ))
+                  $("#talk").val('')
+                };
+            
+            var receiveEvent = function(event) {
+                var data =  JSON.parse(event.data);
+                
+                // Create the message element
+                var el = $('<div class="message"><span></span><p></p></div>')
+                $("p", el).text(data.message)
+                $('#messages').append(el)
+            };
+            
+            var datamembers = function(data1){
+                         var data2 =  JSON.parse(data1.data);
+                        console.log(data1)
+                         var el = $('<div><button id="mmb" onclick="checkmmb()"></button></div>')
+                        $("button", el).text(data2)
+                        $('#members').append(el)
+               };
+           
+            
+            $("#clk").click(sendMessage)  
+            
+           
+            chatSocket.onmessage = receiveEvent
+            chatSocket2.onmessage = datamembers
+            function checkmmb(){
+                        console.log("in check")
+                        chatSocket.send(JSON.stringify(
+                        {text : $("#mmb").val()}
+                        ))
+                        }
+        
+   
+    </script>    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

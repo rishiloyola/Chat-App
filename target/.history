@@ -1,0 +1,14 @@
+run
+eclipse
+eclipse with-source=true
+eclipse skip-parents=false
+eclipsify
+eclipse with-source=true
+exit
+eclipse with-source=true
+exit
+eclipse with-source=true
+exit
+eclipse with-source=true
+exit
+run

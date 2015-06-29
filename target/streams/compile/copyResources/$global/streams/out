@@ -1,0 +1,4 @@
+[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
+[0m[[0mdebug[0m] [0m	(/Users/Rishi/Downloads/activator-1.3.4-minimal/chat/conf/application.conf,/Users/Rishi/Downloads/activator-1.3.4-minimal/chat/target/scala-2.11/classes/application.conf)[0m
+[0m[[0mdebug[0m] [0m	(/Users/Rishi/Downloads/activator-1.3.4-minimal/chat/conf/logback.xml,/Users/Rishi/Downloads/activator-1.3.4-minimal/chat/target/scala-2.11/classes/logback.xml)[0m
+[0m[[0mdebug[0m] [0m	(/Users/Rishi/Downloads/activator-1.3.4-minimal/chat/conf/routes,/Users/Rishi/Downloads/activator-1.3.4-minimal/chat/target/scala-2.11/classes/routes)[0m
