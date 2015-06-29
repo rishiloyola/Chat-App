@@ -33,14 +33,13 @@ import play.mvc.*;
 import views.html.*;
 
 public class Application extends Controller {
-	 private static OrientGraph graph=new OrientGraph ("remote:localhost/test", "root", "rishi98245" );;
+	 private static OrientGraph graph=new OrientGraph ("remote:localhost/test", "admin", "admin" );;
 	 
     public Result index() {
         
     	return ok(welcome.render());  
     }
     public Result welcome() {
-       //graph = new OrientGraph ("remote:localhost/test", "root", "rishi98245" );
 
     	DynamicForm requestData = Form.form().bindFromRequest();
         String inputName = requestData.get("username");
